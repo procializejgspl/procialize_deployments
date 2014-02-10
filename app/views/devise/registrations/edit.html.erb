@@ -1,0 +1,195 @@
+<%
+   current_user.assets.destroy_all
+%>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="span6">
+    <h2>Edit my profile</h2>
+    </div>
+    <div class="span4">
+      <span style="float: right"><a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="btn btn-info"><%= image_tag "linkedin_logo.png",:size=>"32x32" %>Populate via LinkedIn</a></span>
+    </div>
+    <div class="span2"></div>
+
+  </div>
+
+</div>
+
+    <hr>
+<div class="row-fluid">
+  <div class="span12">
+    <div class="span6" >
+      <%= devise_error_messages! %>
+
+
+      <div class="row-fluid user_form_field"   >
+        <div class="span12">
+          <div class="span4">
+            <span class="span_label"><b>Email:</b></span>
+          </div>
+          <div class="span8">
+            <%= f.email_field :email, :autofocus => true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid user_form_field"   >
+        <div class="span12">
+          <div class="span4">
+            <span class="span_label"><b>Name:</b></span>
+          </div>
+          <div class="span8">
+            <%= f.text_field :name, :autofocus => true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid user_form_field">
+        <div class="span12">
+          <div class="span4">
+            <span class="span_label"><b>Password:</b></span>
+          </div>
+          <div class="span8">
+            <%= f.password_field :password, :autocomplete => "off" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid user_form_field"   >
+        <div class="span12">
+          <div class="span2">
+            <span class="span_label"><b>Confirmation:</b></span>
+          </div>
+          <div class="span6 offset2">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row-fluid user_form_field"   >
+        <div class="span12">
+          <div class="span4">
+            <span class="span_label"><b>Interest:</b></span>
+          </div>
+          <div class="span8">
+            <%= f.text_field :interest, :autofocus => true,:placeholder => "Designation" %>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid user_form_field"   >
+        <div class="span12">
+          <div class="span4">
+            <span class="span_label"><b>Assets:</b></span>
+          </div>
+          <div class="span8">
+            <%  1.times { current_user.assets.build } %>
+            <%= f.fields_for :assets do |asset| %>
+
+                <% if asset.object.new_record? %>
+                    <%= asset.file_field :content %>
+                <% end %>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span6" >
+      <div class="existing_content">
+        <div class="row-fluid user_form_field"   >
+          <div class="span12">
+            <div class="span4">
+              <span class="span_label"><b>Industry:</b></span>
+            </div>
+            <div class="span8">
+              <%= f.text_field :industry, :autofocus => true,:placeholder => "Industry" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-fluid user_form_field"   >
+          <div class="span12">
+            <div class="span4">
+              <span class="span_label"><b>Headline:</b></span>
+            </div>
+            <div class="span8">
+              <%= f.text_field :headline, :autofocus => true,:placeholder => "Designation" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-fluid user_form_field"   >
+          <div class="span12">
+            <div class="span4">
+              <span class="span_label"><b>Company:</b></span>
+            </div>
+            <div class="span8">
+              <%= f.text_field :company, :autofocus => true,:placeholder => "Company Name" %>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid user_form_field"   >
+          <div class="span12">
+            <div class="span4">
+              <span class="span_label"><b>Location:</b></span>
+            </div>
+            <div class="span8">
+              <%= f.text_field :location, :autofocus => true,:placeholder => "Location" %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row-fluid user_form_field"   >
+          <div class="span12">
+            <div class="span4">
+              <span class="span_label"><b>Profile Image:</b></span>
+            </div>
+            <div class="span8">
+              <%= f.file_field :user_pic, :autofocus => true %>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+    <hr>
+<div class="row-fluid">
+  <div class="span12 ">
+    <div class="span6"></div>
+    <div class="span6">
+
+<div class="span12">
+  <div class="span6">
+    <%= f.password_field :current_password,:required=>true,:placeholder=>"Current password" %>
+
+  </div>
+  <div class="span6">
+    <%= f.submit "Update",:class=>"btn btn-medium btn-success" %>
+
+  </div>
+
+
+</div>
+    </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+<% end %>

@@ -1,0 +1,42 @@
+<div class="row-fluid">
+  <div class="span12">
+
+<%= form_for(@questionable,:html=>{:class=>"form-horizontal123"}) do |f| %>
+    <%= f.hidden_field :event_id,:value=>@event_id %>
+    <%= f.hidden_field :user_id,:value=>current_user.id %>
+        <div class="span12">
+        <%= f.text_area :quest_name,:style=>"width:90%;",:rows=>"3x3",:placeholder => "Ask your Question here" %>
+    </div>
+
+  <div class="row-fluid">
+    <div class="span4 offset2">
+      <%= f.submit "Ask", :class=>"btn btn-large btn-primary" %>
+    </div>
+
+
+  <div class="span4">
+    <%= link_to  "Back",event_path(@event_id), :class=>"btn btn-large btn-warning",:onclick=>"toggleContent(this,event)" %>
+ </div>
+  </div>
+
+
+  <% end %>
+    </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <ul class="alternate_colored_list">
+
+    <% Event.find(@event_id).questionables.each do |q| %>
+      <li class="sidebar_link"><%= q.quest_name %>
+        <span style="float: right">
+          <%= question_likes(q) %>
+
+        </span>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+

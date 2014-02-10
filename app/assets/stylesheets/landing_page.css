@@ -1,0 +1,206 @@
+
+body{
+    background-color: black;
+    background-image: url("/assets/back.jpg");
+    color:#ffffff;
+}
+
+.navbar
+
+
+.navbar-inner
+{
+    /*background: -webkit-linear-gradient(left, red , blue); *//* For Safari */
+    /*background: -o-linear-gradient(right, red, blue); *//* For Opera 11.1 to 12.0 */
+    /*background: -moz-linear-gradient(right, red, blue); *//* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7e7d7c , #b1b1b1,#7e7d7c);
+    color: black;
+    border: none;
+    /*box-shadow: 5px 5px 3px rgba(0,0,0,0.44);*/
+}
+.navbar .brand{
+    color: #000000;
+    /*text-shadow: 2px 2px #000000;;*/
+
+}
+
+.navbar .nav>li>a:focus, .navbar .nav>li>a{
+    color: #000000;
+    /*text-shadow: 1px 1px #000000;;*/
+}
+.message_tabs
+{
+    color: white;
+}
+
+.sign_in_form_container
+{
+    /*position: absolute;*/
+    /*top:25%;*/
+    /*border: 1px solid deepskyblue;*/
+    padding: 10%;
+
+}
+
+
+
+.message_container
+{
+
+    color:white;
+    border-radius:2%;
+}
+
+
+.each_event
+{
+    padding: 5%;
+    background-color:sandybrown ;
+    border: 1px solid #000000;
+}
+
+
+.message_body_container
+{
+    overflow-y: auto;
+    height: 250px;
+    /*color:whitesmoke;*/
+
+}
+
+
+.event_container
+{
+    overflow-y: auto;
+
+
+}
+
+
+
+.sidebar_link
+{
+    padding: 2%;
+    font-size: 1.2em;
+}
+.main_body
+{
+    height: 575px;
+}
+
+ .user_form_field
+ {
+     margin-top: 5%;
+ }
+
+
+
+.jcarousel-wrapper {
+    margin: 20px auto;
+    position: relative;
+    border: 10px solid #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px #999;
+    -moz-box-shadow: 0 0 2px #999;
+    box-shadow: 0 0 2px #999;
+}
+
+
+
+/*.alternate_colored_list > li:nth-child(odd)  .message_list_header { background-color: #7e7d7c }*/
+/*.alternate_colored_list > li:nth-child(even)  .message_list_header { background-color:#aaaaaa; }*/
+
+.message_alternate_colored_list{
+    list-style-type: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 450px;
+
+}
+
+
+
+
+
+.alternate_colored_list{
+    list-style-type: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+}
+
+.post_colored{
+    list-style-type: none;
+    overflow-y: auto;
+    /*padding: 2%;*/
+    overflow-x: hidden;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+}
+
+.user_list
+{
+    padding: 2%;
+
+}
+
+.link_list
+{
+    padding-top: 50%;
+}
+
+.filtered_events
+{
+    list-style-type:  none;
+}
+
+.event_description{
+    height: 30%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    margin-bottom: 1%;
+    margin-top: 3%;
+    padding: 2%;
+
+}
+
+.event_list_container{
+    /*max-height: 500px;*/
+    overflow-x: hidden;
+}
+
+
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+
+.adv_img > li {
+    padding-right: 2%;
+}
+
+
+
+.well
+{
+    background-color: #424242;border: 1px solid #aaaaaa;
+    padding-bottom: 0;
+
+}
+
+
+.span_label{
+    color: white;
+    font-size: 1.1em;
+}
+
+
+ul
+{
+    margin: 0 0 0 0;
+}

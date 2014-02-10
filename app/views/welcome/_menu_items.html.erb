@@ -1,0 +1,29 @@
+<li class="sidebar_link"><%= link_to  meetings_path do %>
+      Meetings<sup><%= @pending %></sup>
+  <% end %>
+</li>
+<li class="sidebar_link"><%= link_to  messages_path do %>
+      Messages<sup><%= @unread %></sup>
+  <% end %>
+</li>
+<li class="sidebar_link"><%= link_to "Events", events_path  %></li>
+<% u = User.find_by_email("organizer@ptotem.com") %>
+<li class="sidebar_link"><%= link_to "Contact Us", new_message_path(:type=>"cnt",:rcpt=>u.id),:onclick=>"toggleContent(this,event);$('.btn-navbar').trigger('click');" %></li>
+
+<% Role.all.each do |r| %>
+    <% if r.users.count>0 %>
+    <li class="sidebar_link"><%= link_to r.name, user_roles_path(r.id)  %></li>
+        <% end %>
+    <% end %>
+
+
+<% CustomPage.where("display = ?",true).each do |c| %>
+    <li class="sidebar_link"><%= link_to c.name, c  %></li>
+<% end %>
+<% Survey.where("display = ?",true).each do |s| %>
+    <li class="sidebar_link"><%= link_to s.name, take_survey_path(s.id),:target => "_blank"  %></li>
+<% end %>
+
+
+
+

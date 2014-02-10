@@ -1,0 +1,45 @@
+
+<div class="row-fluid">
+  <div class="span12">
+    <%= form_tag({:controller => 'answers',:action => "create"},{:class=>"form-horizontal123 "}) do %>
+
+            <div class="row-fluid">
+              <% Survey.where("is_display = ?",true).each do |c|  %>
+                  <h3><%= c.name %></h3>
+              <% end %>
+            </div>
+
+            <div class="row-fluid">
+              <% Question.find_all_by_survey_id(@survey.id).each do |s|  %>
+                  <%= s.name %>
+                  <%= hidden_field_tag 'question_id', s.id %>
+              <% end %>
+            </div>
+
+            <div class="row-fluid">
+              <% Option.find_all_by_question_id(@survey.questions.first.id).each do |o| %>
+                  <div class="row-fluid">
+                    <div class="span2">
+                      <label><%= o.name %></label>
+                    </div>
+                    <div class="span2">
+                      <%= radio_button_tag 'option_id', o.id %>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+
+            <div class="row-fluid">
+              <button type="submit" class="btn btn-success btn-medium">Send</button>
+            </div>
+
+    <% end  %>
+  </div>
+</div>
+
+
+
+
+
+
+

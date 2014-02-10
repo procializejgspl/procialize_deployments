@@ -1,0 +1,56 @@
+
+<li style="margin-top: 2%">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="row-fluid message_list_header">
+        <b>  <%=  display_date_time(message.created_at).humanize  %></b>
+      </div>
+      <div class="row-fluid" style="padding: 2%">
+
+          <div class="span3 hidden-phone">
+            <%= image_tag message.user.user_pic.url,:class=>"img-responsive " %>
+          </div>
+          <div class="span9">
+            <div class="row-fluid">
+              <div class="span9">
+                <span style="font-size: 1.4em;font-weight:bold "> <%= message.user.name.humanize %></b></span>
+              </div>
+              <div class="span2 offset1 hidden-phone">
+                <%= generate_message_list_link(message) %>
+              </div>
+            </div>
+            <div class="row-fluid">
+                <span style="font-size: 1.0em;font-weight: bold">  <%= link_to message.subject.truncate(40) ,message_path(message),:onclick=>"toggleContent(this,event)" %></span>
+            </div>
+            <div class="row-fluid" style="line-height: 12px;">
+                <!--body-->
+                <span style="font-size: 1.0em;line-height: 8px">  <%=  strip_tags(message.body.truncate(120)) %></span>
+            </div>
+
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+
+
+
+
+
+

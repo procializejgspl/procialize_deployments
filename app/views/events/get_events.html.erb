@@ -1,0 +1,3 @@
+<%  @events.each_with_index do |e,index| %>
+    <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(e.starting_at),:pic_to_show=>"user_dummy.jpg",:link_on_right=>link_to("Go",new_attendee_path(:event_id=>@event.id,:decision=>"true"),:class=>"right_link"),:list_title=>e.name,:list_info=>strip_tags(e.description.truncate(75)),:list_body=>"",:link_to_go=>event_path(e)} %>
+<% end %>

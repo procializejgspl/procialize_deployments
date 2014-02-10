@@ -1,0 +1,30 @@
+<%= form_tag({:action => "create"}) do %>
+
+
+    <fieldset>
+      <legend>Send a Message</legend>
+
+      <label>Agenda of Message</label>
+      <%= text_area_tag "body" %>
+      <div class="row-fluid">
+        <div class="span12">
+          <% (User.all-[current_user]).each do |u| %>
+              <div class="row-fluid">
+                <div class="span1">
+                  <%= check_box_tag 'rids[]', u.id %>
+                </div>
+                <div class="span6">
+                  <label><%= u.email %></label>
+                </div>
+              </div>
+
+          <% end %>
+        </div>
+      </div>
+
+
+      </label>
+      <button type="submit" class="btn">Submit</button>
+    </fieldset>
+
+<% end %>

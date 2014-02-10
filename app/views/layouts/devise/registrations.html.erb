@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Procialize" %></title>
+  <%= csrf_meta_tags %>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <!-- For third-generation iPad with high-resolution Retina display: -->
+  <!-- Size should be 144 x 144 pixels -->
+  <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+  <!-- For iPhone with high-resolution Retina display: -->
+  <!-- Size should be 114 x 114 pixels -->
+  <%= favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+  <!-- For first- and second-generation iPad: -->
+  <!-- Size should be 72 x 72 pixels -->
+  <%= favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <!-- Size should be 57 x 57 pixels -->
+  <%= favicon_link_tag 'images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+  <!-- For all other devices -->
+  <!-- Size should be 32 x 32 pixels -->
+  <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+  <% @color1 = Customizer.first.menu_color_one
+     @color2 = Customizer.first.menu_color_two
+     @font_color = Customizer.first.menu_font_color
+     @header_color = Customizer.first.menu_header_color
+  %>
+  <!--styles written here are the customizable items ... set using the admin panel-->
+  <style type="text/css">
+
+      .alternate_colored_list > li:nth-child(odd) { background-color: <%= @color1 %>;color:<%= @font_color %> }
+      .alternate_colored_list > li:nth-child(even) { background-color:<%= @color2 %>;color:<%= @font_color %> }
+
+      body{
+          color: <%= @font_color %>;
+      }
+      .message_alternate_colored_list > li  a{
+          color:<%= @font_color %>
+      }
+      .message_list_header
+      {
+          background-color: <%= @color2 %>;
+          padding: 2%;
+          color: <%= @header_color %>;
+          border :0px solid white;
+          border-radius:5px;
+
+      }
+      a{
+          color: #000000;
+      }
+
+      a:hover{
+          background-color: transparent;
+      }
+      .nav>li>a:hover{
+          background-color: transparent;
+      }
+
+
+      .message_alternate_colored_list > li{
+          border: 1px solid transparent;
+          background-color: <%= @color1 %>;
+          border-radius: 5px;
+          color:<%= @font_color %>;
+          cursor: pointer;
+
+
+      }
+          .main_phone_body
+          {
+              height: 1400px;
+          }
+          .main_body{
+              height: 600px;
+          }
+
+  </style>
+
+</head>
+<body>
+
+<div class="navbar navbar-fluid-top" >
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar navbar-icon icon-list " data-target=".nav-collapse" data-toggle="collapse" style="color: #000000" >
+        <%#= link_to "/menu",:class=>"btn btn-navbar",:onclick=>"toggleContent(this,event)" do%>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <%# end %>
+      </a>
+      <%
+         @unread = Recipient.find_all_by_user_id_and_status(current_user.id, false).count
+         @pending = Meeter.find_all_by_user_id_and_status(current_user.id, 0).count
+      %>
+      <a class="brand" href="/">Procialize</a>
+
+      <button type="button" class="btn btn-default pull-right hidden-desktop">
+        <i class="icon-home icon-6"></i>
+      </button>
+
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+
+          <div class="hidden-desktop">
+            <%= render :partial => "welcome/menu_items" %>
+          </div>
+        </ul>
+        <% if user_logged_in? %>
+            <div style="float: right">
+              <ul class="nav">
+                <li><%= link_to current_user.name.to_s.titleize,edit_user_registration_path,:title=>"Click to edit profile" %></li>
+                <li><%= link_to "Logout",destroy_user_session_path,:method => :delete %></li>
+              </ul>
+            </div>
+        <% end %>
+      </div><!--/.nav-collapse -->
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3 hidden-phone">
+      <div class="well sidebar-nav main_body ">
+        <ul class="nav nav-list alternate_colored_list">
+          <li class="nav-header" style="padding: 0;margin-bottom: 5%"><%= image_tag Customizer.first.event_logo.url,:size=>"300x300" %></li>
+          <%= render :partial => "welcome/menu_items" %>
+        </ul>
+      </div><!--/.well -->
+    </div><!--/span-->
+    <!--<div class="span9 main_body hidden-desktop">-->
+    <!--<div class="existing_content">-->
+    <!--<%#= yield(:first_half) %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="span9 main_body well hidden-phone ">
+      <%#= bootstrap_flash %>
+
+
+      <%= yield %>
+
+    </div>
+    <div class="span9 main_phone_body well hidden-desktop">
+      <%#= bootstrap_flash %>
+
+
+      <%= yield %>
+
+    </div>
+
+
+    <!--this is what will be seen on phone...-->
+
+  </div><!--/row-->
+
+
+  <%= js add_gritter(flash[:notice], :image => :success, :title => flash[:notice], :sticky => false,:position=>"bottom_left") %>
+  <%= js add_gritter(flash[:alert], :image => :error, :title => "Oops!", :sticky => false) %>
+  <%= js extend_gritter :time => 5000,:position=>:bottom_left %>
+
+
+</div> <!-- /container -->
+
+<!-- Javascripts
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '<%= Customizer.first.ga_tracker_id.to_s %>', 'procialize.net');
+    ga('send', 'pageview');
+</script>
+
+</body>
+</html>

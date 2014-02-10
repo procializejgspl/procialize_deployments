@@ -1,0 +1,109 @@
+<%= content_for(:first_half) do %>
+    <script>
+      function changeText(txt)
+      {
+          if(txt === "Join")
+              return "Leave";
+          else
+              return "Join"
+      }
+
+    </script>
+    <div class="row-fluid">
+    <div class="span12">
+    Track: <%= collection_select(nil,"track_ids[]",Track.all,:id,:name,{},{:id=>"track",:class=>"multiselect trackselect",:multiple=>"multiple"}) %>
+    </div>
+    </div>
+
+<br>
+
+<div class="row-fluid">
+  <div class="span12 event_list_container" >
+
+
+      <ul class="nav nav-tabs">
+        <% EventDay.all.each_with_index do |ed,index| %>
+            <% if index==0  %>
+                <% currclass="active" %>
+               <% else %>
+                <% currclass="active123" %>
+             <% end %>
+            <li class="<%= currclass %>"><a href="#<%= ed.id %>" onclick="event.preventDefault()" data-toggle="tab" ><b><%= ed.name %></b></a></li>
+        <% end %>
+
+      </ul>
+
+
+
+      <div class="tab-content">
+        <% EventDay.all.each_with_index do |ed,index| %>
+            <% if index==0  %>
+                <% currentclass="active" %>
+            <% else %>
+                <% currentclass="active123" %>
+            <% end %>
+        <div class="tab-pane <%= currentclass %>" id="<%= ed.id %>">
+
+          <ul class="message_alternate_colored_list" style="height: 400px;">
+            <% ed.events.each do |e| %>
+                <div id="event-<%= e.id %>" class="event row-fluid">
+                   <div class="span11">
+                     <% att = Attendee.find_by_user_id_and_event_id(current_user.id,e.id)  %>
+                     <% if att.nil? %>
+                         <% link_text = "Join" %>
+                     <% else %>
+                         <% link_text = "Leave" %>
+                     <% end %>
+                     <% event_link = link_to(link_text,new_attendee_path(:event_id=>e.id,:decision=>"true"),:class => "btn btn-small btn-default ",:onclick => 'toggleContent(this,event);$(this).text(changeText($(this).text()))') %>
+                     <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(e.starting_at),:pic_to_show=>"noPic",:link_on_right=>event_link,:list_title=>e.name,:list_info=>strip_tags(e.description.truncate(75)),:list_body=>"",:link_to_go=>event_path(e)} %>
+                   </div>
+
+                </div>
+
+            <% end %>
+          </ul>
+
+        </div>
+            <% end %>
+            </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.trackselect').change(function() {
+
+            var selected_tracks = $("#track").val();
+            var selected_days = $("#evt_day").val();
+            if (selected_tracks=== null)
+            selected_tracks = [];
+            $.get('/get_events', { tracks:selected_tracks}, function(response) {
+                $(".event").hide();
+                visible_events = response.split(",");
+                for(var i=0;i< visible_events.length;i++)
+                {
+                    $("#event-"+parseInt(visible_events[i]).toString()).show()
+                }
+
+//                $(".message_alternate_colored_list").html(response)
+            });
+
+
+
+
+        });
+        });//end of ready
+</script>
+
+<% end %>
+
+<%= content_for(:second_half) do %>
+    <%= render :file=>"events/show" %>
+<% end %>

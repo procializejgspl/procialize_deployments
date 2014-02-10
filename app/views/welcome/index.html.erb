@@ -1,0 +1,53 @@
+<%= content_for(:first_half) do %>
+    <div class="row-fluid">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% AdvLogos.all.each_with_index do |adv,index| %>
+              <div class="item">
+                <%= link_to image_tag(adv.avatar.url) ,adv.name,:target=>"_blank" %>
+              </div>
+
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-fluid" style="height: 250px">
+      <div class="span12">
+        <%= render :partial => "welcome/post" %>
+        <%= render :partial => "welcome/feeds" %>
+        <div class="hidden-desktop" style="background-color: gray">
+
+          <marquee>
+            <% @tweets.each do |t| %>
+
+                <%= t[:screen_name] %> : <%= t[:tweet] %>
+
+            <% end %>
+          </marquee>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+<% end %>
+
+<%= content_for(:second_half) do %>
+
+    <div class="row-fluid" style="margin-top: 2%;">
+      <div class="span12" style="height: 325px" >
+        <%= render :partial => "welcome/user_list" %>
+      </div>
+    </div>
+    <div class="row-fluid" style="margin-top:25% ">
+      <div class="span12">
+        <%= render :partial => "welcome/twitter_feeds" %>
+      </div>
+    </div>
+
+<% end %>

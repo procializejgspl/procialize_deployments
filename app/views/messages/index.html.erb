@@ -1,0 +1,83 @@
+
+<%= content_for(:first_half) do %>
+
+<%#= link_to (fa_icon "fa-file-text",:text=>"New Message"),new_message_path,:class => "btn btn-large btn-success",:title => "Compose new message" %>
+     <div class="row-fluid hidden-desktop">
+       <div class="span6 offset3">
+       <%= link_to "Compose New Message",new_message_path,:class => "btn btn-large btn-default",:onclick=>"toggleContent(this,event)" %>
+       </div>
+     </div>
+    <br>
+
+    <div class="row-fluid">
+      <div class="span12">
+<ul class="nav nav-tabs " >
+  <li class="active"><a href="#inbox" data-toggle="tab" ><b>Inbox(<%= @unread.size %>)</b></a></li>
+  <li><a href="#read" data-toggle="tab"><b>Read(<%= @read.size %>)</b></a></li>
+  <li><a href="#sent" data-toggle="tab"><b>Sent(<%= @sent.size %>)</b></a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="inbox">
+    <ul class="message_alternate_colored_list" style="height: 450px">
+      <% @unread.each do |message| %>
+      <%#= render :partial => "messages/message_display",:locals=>{:message=>message} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(message.created_at),:pic_to_show=>message.user.user_pic.url,:link_on_right=>generate_message_list_link(message),:list_title=>message.user.name,:list_info=>message.subject,:list_body=>message.body,:link_to_go=>message_path(message)} %>
+      <% end %>
+    </ul>
+
+  </div>
+  <div class="tab-pane" id="read">
+    <ul class="message_alternate_colored_list" style="height: 450px">
+      <% @read.each do |message| %>
+          <%#= render :partial => "messages/message_display",:locals=>{:message=>message} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(message.created_at),:pic_to_show=>message.user.user_pic.url,:link_on_right=>generate_message_list_link(message),:list_title=>message.user.name,:list_info=>message.subject,:list_body=>message.body,:link_to_go=>message_path(message)} %>
+      <% end %>
+    </ul>
+
+
+
+  </div>
+  <div class="tab-pane" id="sent" style="height: 450px">
+    <ul class="message_alternate_colored_list">
+      <% @sent.each do |message| %>
+          <%#= render :partial => "messages/message_display",:locals=>{:message=>message} %>
+
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(message.created_at),:pic_to_show=>message.user.user_pic.url,:link_on_right=>generate_message_list_link(message),:list_title=>message.user.name,:list_info=>message.subject,:list_body=>message.body,:link_to_go=>message_path(message)} %>
+
+      <% end %>
+    </ul>
+  </div>
+
+
+</div>
+
+      </div>
+    </div>
+
+
+<% end %>
+
+
+
+<%= content_for(:second_half)  do %>
+
+       <%= render :file => "messages/new" %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

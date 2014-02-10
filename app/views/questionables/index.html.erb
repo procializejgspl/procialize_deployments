@@ -1,0 +1,31 @@
+<h1>Listing questionables</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>User</th>
+    <th>Approved</th>
+    <th>Quest name</th>
+    <th>Likes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questionables.each do |questionable| %>
+  <tr>
+    <td><%= questionable.event_id %></td>
+    <td><%= questionable.user_id %></td>
+    <td><%= questionable.approved %></td>
+    <td><%= questionable.quest_name %></td>
+    <td><%= questionable.likes %></td>
+    <td><%= link_to 'Show', questionable %></td>
+    <td><%= link_to 'Edit', edit_questionable_path(questionable) %></td>
+    <td><%= link_to 'Destroy', questionable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Questionable', new_questionable_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @viewer.user_id %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%= @viewer.count %>
+</p>
+
+
+<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
+<%= link_to 'Back', viewers_path %>

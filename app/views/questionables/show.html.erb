@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @questionable.event_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @questionable.user_id %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @questionable.approved %>
+</p>
+
+<p>
+  <b>Quest name:</b>
+  <%= @questionable.quest_name %>
+</p>
+
+<p>
+  <b>Likes:</b>
+  <%= @questionable.likes %>
+</p>
+
+
+<%= link_to 'Edit', edit_questionable_path(@questionable) %> |
+<%= link_to 'Back', questionables_path %>

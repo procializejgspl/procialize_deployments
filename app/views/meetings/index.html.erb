@@ -1,0 +1,92 @@
+<%=  content_for(:first_half)  do%>
+
+    <div class="row-fluid hidden-desktop">
+      <div class="span6 offset3">
+        <%= link_to "Schedule New Meeting",new_meeting_path,:class => "btn btn-large btn-default",:onclick=>"toggleContent(this,event)" %>
+      </div>
+    </div>
+    <br>
+
+
+<div class="row-fluid">
+<div class="span11">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#schd" data-toggle="tab" ><b>Scheduled(<%= @scheduled.count %>)</b></a></li>
+  <li><a href="#invt" data-toggle="tab"><b>Pending(<%= @pending.count %>)</b></a></li>
+  <li class="hidden-phone" ><a href="#dec" data-toggle="tab"><b>Declined(<%= @declined.count %>)</b></a></li>
+
+  <li><a href="#req" data-toggle="tab"><b>Sent(<%= @sent.count %>)</b></a></li>
+
+</ul>
+
+<div class="tab-content" id="contenting">
+  <div class="tab-pane active" id="schd">
+    <% if @scheduled.blank? %>
+    <p>You have no scheduled meetings</p>
+     <% end %>
+    <ul class="message_alternate_colored_list">
+      <% @scheduled.each do |meeting| %>
+          <%#=render :partial => 'meetings/meeting_display',:locals=>{:meeting=>meeting,:type=>"schd"} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(meeting.start_time),:pic_to_show=>User.find(meeting.user_id).user_pic.url,:link_on_right=>show_meeting_rejection_link(meeting),:list_title=>User.find(meeting.user_id).name,:list_info=>meeting.name,:list_body=>"",:link_to_go=>meeting_path(meeting)} %>
+      <% end %>
+    </ul>
+
+
+  </div>
+  <div class="tab-pane" id="invt">
+
+    <% if @pending.blank? %>
+        <p>You have no scheduled meetings</p>
+    <% end %>
+    <ul class="message_alternate_colored_list">
+      <% @pending.each do |meeting| %>
+          <%#=render :partial => 'meetings/meeting_display',:locals=>{:meeting=>meeting,:type=>"pend"} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(meeting.start_time),:pic_to_show=>User.find(meeting.user_id).user_pic.url,:link_on_right=>show_meeting_rejection_link(meeting),:list_title=>User.find(meeting.user_id).name,:list_info=>meeting.name,:list_body=>"",:link_to_go=>meeting_path(meeting)} %>
+      <% end %>
+    </ul>
+
+
+  </div>
+  <div class="tab-pane hidden-phone" id="dec">
+    <% if @declined.blank? %>
+        <p>You have no scheduled meetings</p>
+    <% end %>
+    <ul class="message_alternate_colored_list">
+      <% @declined.each do |meeting| %>
+          <%#=render :partial => 'meetings/meeting_display',:locals=>{:meeting=>meeting,:type=>"dec"} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(meeting.start_time),:pic_to_show=>User.find(meeting.user_id).user_pic.url,:link_on_right=>show_meeting_rejection_link(meeting),:list_title=>User.find(meeting.user_id).name,:list_info=>meeting.name,:list_body=>"",:link_to_go=>meeting_path(meeting)} %>
+      <% end %>
+    </ul>
+
+
+  </div>
+  <div class="tab-pane" id="req">
+
+    <% if @sent.blank? %>
+        <p>You have not sent any meeting requests</p>
+    <% end %>
+    <ul class="message_alternate_colored_list">
+    <% @sent.each do |meeting| %>
+        <%#=render :partial => 'meetings/meeting_display',:locals=>{:meeting=>meeting,:type=>"sent"} %>
+          <%= render :partial => "commons/list_with_headers",:locals=>{:header_text=>display_date_time(meeting.start_time),:pic_to_show=>User.find(meeting.user_id).user_pic.url,:link_on_right=>show_meeting_rejection_link(meeting),:list_title=>User.find(meeting.user_id).name,:list_info=>meeting.name,:list_body=>"",:link_to_go=>meeting_path(meeting)} %>
+    <% end %>
+    </ul>
+
+  </div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<% end %>
+
+
+
+<%= content_for(:second_half) do %>
+    <%= render :file=>"meetings/new" %>
+<% end %>

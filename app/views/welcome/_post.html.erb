@@ -1,0 +1,24 @@
+<%= form_tag({:controller => "feeds",:action => "create"}) do %>
+
+    <ul class="post_colored" style="list-style-type: none">
+      <li>
+        <div class="row-fluid">
+          <div class="row-fluid">
+            <div class="span6">
+              <%= text_area_tag "post",nil,:style => 'width:100%;height:45px;',:placeholder => 'Post your Update here',:required => true %>
+            </div>
+            <div class="span2 offset1">
+              <button type="submit" class="btn btn-inverse btn-small" style="float: right;">Update</button>
+            </div>
+          </div>
+
+
+        </div>
+      </li>
+    </ul>
+
+
+
+
+
+<% end %>

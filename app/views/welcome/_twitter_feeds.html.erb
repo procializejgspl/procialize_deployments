@@ -1,0 +1,46 @@
+<ul class="message_alternate_colored_list" style="pointer-events:none">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+
+
+      <% @tweets.each do |t| %>
+          <div class="item">
+    <li>
+         <div class="row-fluid" style="height: 10%;width:100%">
+           <div class="span12">
+          <div class="row-fluid message_list_header">
+
+             <%=  t[:screen_name]   %> tweets...
+
+          </div>
+          <div class="row-fluid" style="padding: 2%">
+
+            <div class="span1">
+              <%= image_tag t[:pic],:class=>"img-responsive" %>
+            </div>
+            <div class="span10">
+              <div class="row-fluid" style="line-height: 12px;">
+                <!--body-->
+                <span style="font-size: 1.0em;line-height: 16px">  <%=  strip_tags(t[:tweet].truncate(140)) %></span>
+              </div>
+
+            </div>
+
+
+          </div>
+
+         </div>
+          </div>
+
+    </li>
+          </div>
+         <% end %>
+
+</div>
+
+      </div>
+</ul>
+
+
+
+

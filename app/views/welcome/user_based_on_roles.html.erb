@@ -1,0 +1,9 @@
+<%= content_for(:first_half) do%>
+    <div class="span12" style="height: 425px" >
+
+    <%= render :partial => "welcome/user_list" %>
+        </div>
+<% end %>
+<%= content_for(:second_half) do %>
+    <%= render :template => 'welcome/user_profile' %>
+<% end %>

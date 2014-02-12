@@ -30,8 +30,8 @@ gem 'twitter'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'yaml_db'
-#gem 'mysql2'
-gem 'sqlite3'
+gem 'mysql2'
+#gem 'sqlite3'
 
 
 # Gems used only for assets and not required
@@ -59,6 +59,7 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

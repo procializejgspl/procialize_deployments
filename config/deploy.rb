@@ -6,10 +6,10 @@ set :rake, 'bundle exec rake'
 default_run_options[:pty] = true
 set :repository, "https://github.com/procializejgspl/procialize_deployments.git"
 set :scm, "git"
-set :branch, "ciibts_2013"
+set :branch, "md_2013"
 set :deploy_via, :remote_cache
 
-set :application, "Procialize_ciibts"
+set :application, "Procialize_md"
 set :deploy_to, "/var/www/rails_apps/#{application}"
 set :user, "root"
 set :admin_runner, "root"

@@ -28,19 +28,20 @@
 
 #
 development:
+  host: localhost
   adapter: mysql2
   encoding: utf8
-  reconnect: false
-  database: ciibts_development_db
+  database: d_development_db
   pool: 5
   username: root
-  password: 'p20o20e13'
+  password: 'nikunj'
+  socket: /var/run/mysqld/mysqld.sock
 
 test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ciibts_test_db
+  database: d_test_db
   pool: 5
   username: root
   password: 'p20o20e13'
@@ -49,7 +50,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ciibts_production_db
+  database: d_production_db
   pool: 5
   username: root
   password: 'p20o20e13'

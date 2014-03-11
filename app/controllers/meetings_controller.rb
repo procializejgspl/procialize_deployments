@@ -53,6 +53,7 @@ class MeetingsController < ApplicationController
   respond_to do |format|
     begin
       if !params["meeters"].blank?
+      params["meeters"].delete("multiselect-all")
       params["meeters"].each do |m|
         @meeting.meeters.build(:user_id=>m,:status=>0)
       end

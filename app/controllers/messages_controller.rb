@@ -73,7 +73,6 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-
     @message = Message.new
     @message.user_id = current_user.id
     @message.body = params[:body]
@@ -81,7 +80,9 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       begin
+
         if !params["recipients"].blank?
+          params["recipients"].delete("multiselect-all")
           params["recipients"].each do |m|
 
             @message.recipients.build(:user_id=>m,:status=>false)

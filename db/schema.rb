@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203120922) do
+ActiveRecord::Schema.define(:version => 20140115064125) do
 
   create_table "adv_logos", :force => true do |t|
     t.string   "name"
@@ -65,15 +65,15 @@ ActiveRecord::Schema.define(:version => 20140203120922) do
   end
 
   create_table "customizers", :force => true do |t|
-    t.string   "twitter_handle",          :default => "@imsrk"
-    t.string   "menu_color_one",          :default => "#aaaaaa"
-    t.string   "menu_color_two",          :default => "#7e7d7c"
-    t.string   "menu_font_color",         :default => "white"
-    t.string   "menu_font_size",          :default => "1.0em"
-    t.string   "menu_header_color",       :default => "white"
-    t.text     "contact_us_body",         :default => "Hello Abhay,"
-    t.datetime "created_at",                                          :null => false
-    t.datetime "updated_at",                                          :null => false
+    t.string   "twitter_handle"
+    t.string   "menu_color_one"
+    t.string   "menu_color_two"
+    t.string   "menu_font_color"
+    t.string   "menu_font_size"
+    t.string   "menu_header_color"
+    t.text     "contact_us_body"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "event_logo_file_name"
     t.string   "event_logo_content_type"
     t.integer  "event_logo_file_size"
@@ -304,7 +304,6 @@ ActiveRecord::Schema.define(:version => 20140203120922) do
     t.integer  "user_pic_file_size"
     t.datetime "user_pic_updated_at"
     t.text     "extra_info"
-    t.integer  "asset_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

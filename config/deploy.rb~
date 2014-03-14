@@ -17,9 +17,9 @@ set :admin_runner, "root"
 set :rvm_type, :user
 set :rvm_bin_path, "/usr/local/rvm/bin"
 
-role :app, "146.185.177.206"
-role :web, "146.185.177.206"
-role :db, "146.185.177.206", :primary => true
+role :app, "procialize.net"
+role :web, "procialize.net"
+role :db, "procialize.net", :primary => true
 
 namespace :deploy do
   desc "Restart Application"

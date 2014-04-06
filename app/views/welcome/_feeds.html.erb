@@ -12,7 +12,7 @@
         <div class="row-fluid" style="height: 10%;width: 100%">
           <div class="span12">
             <div class="row-fluid message_list_header" >
-              <span class="span10">  <%= f.user.name + " - "+ f.user.headline + "," + f.user.company %> says...</span>
+              <span class="span10">  <%= (f.user.name rescue "") + " - "+ (f.user.headline rescue "") + "," + (f.user.company rescue "") %> says...</span>
             </div>
             <div class="row-fluid" style="padding: 2%">
 

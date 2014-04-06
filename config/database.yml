@@ -50,7 +50,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ic2014_production_db
+  database: diemould_production_db
   pool: 5
   username: root
   password: 'p20o20e13'

@@ -6,10 +6,10 @@ set :rake, 'bundle exec rake'
 default_run_options[:pty] = true
 set :repository, "https://github.com/procializejgspl/procialize_deployments.git"
 set :scm, "git"
-set :branch, "procialize_ic2014"
+set :branch, "procialize_diemould"
 set :deploy_via, :remote_cache
 
-set :application, "Procialize_ic2014"
+set :application, "Procialize_diemould"
 set :deploy_to, "/var/www/rails_apps/#{application}"
 set :user, "root"
 set :admin_runner, "root"
@@ -17,9 +17,9 @@ set :admin_runner, "root"
 set :rvm_type, :user
 set :rvm_bin_path, "/usr/local/rvm/bin"
 
-role :app, "procialize.net"
-role :web, "procialize.net"
-role :db, "procialize.net", :primary => true
+role :app, "146.185.177.206"
+role :web, "146.185.177.206"
+role :db, "146.185.177.206", :primary => true
 
 namespace :deploy do
   desc "Restart Application"

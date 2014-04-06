@@ -34,7 +34,7 @@ development:
   database: ic2014_development_db
   pool: 5
   username: root
-  password: 'nikunj'
+  password: nikunj
   socket: /var/run/mysqld/mysqld.sock
 
 test:
@@ -44,13 +44,13 @@ test:
   database: ic2014_test_db
   pool: 5
   username: root
-  password: 'p20o20e13'
+  password: nikunj
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ic2014_production_db
+  database: diemould_production_db
   pool: 5
   username: root
   password: 'p20o20e13'

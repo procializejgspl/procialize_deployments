@@ -204,3 +204,7 @@ hr{
 .download_brochure{
     font-size: 10px;
 }
+
+.user_list, #user_list{
+    padding: 2%;
+}

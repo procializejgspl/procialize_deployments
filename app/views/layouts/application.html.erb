@@ -40,12 +40,19 @@
       $(function () {
 
           setTimeout(function () {
-              $(".loader").hide()
+              $(".loader").hide();
           }, 2000);
+
           $('.carousel').carousel({
               interval: 5000,
               wrap: true
-          })
+          });
+
+          $('.download_brochure').on('click', function () {
+              $.get('/download_brochure/' + $(this).attr('id'), function (data) {
+              });
+          });
+
       });
 
 

@@ -12,8 +12,10 @@
             <h6 class="user_name">
               <%= u.name.titleize %>
               <span class="pull-right">
-          <%= link_to 'Profile',profile_path(u.id),:onclick=>"toggleContent(this,event)",class: "btn btn-small setup_btn",:title=>"View Profile" %><br>
-                <%= link_to 'Message', new_message_path(:rcpt => u.id), :onclick => "toggleContent(this,event)", style: 'margin-top: 6px;', class: "btn btn-small setup_btn", :title => "Send message" if u.role.can_message %><br>
+          <%= link_to 'Profile', profile_path(u.id), :onclick => "toggleContent(this,event)", class: "btn btn-small setup_btn", :title => "View Profile" %>
+                <br>
+                <%= link_to 'Message', new_message_path(:rcpt => u.id), :onclick => "toggleContent(this,event)", style: 'margin-top: 6px;', class: "btn btn-small setup_btn", :title => "Send message" if u.role.can_message %>
+                <br>
                 <%= link_to 'Meet', new_meeting_path(:rcpt => u.id), :onclick => "toggleContent(this,event)", style: 'margin-top: 6px;', class: "btn btn-small setup_btn", :title => "Fix meeting" if u.role.can_meet %>
               </span>
 
@@ -25,6 +27,14 @@
               <p class="user_info"><%= u.company %></p>
 
               <p class="user_info"> <%= u.industry %></p>
+              <% if !u.assets.nil? %>
+                  <br>
+                  <p class="user_info">
+                    <% if u.assets.count > 0 %>
+                        <a target="_blank" href="<%= u.assets.first.content.url %>" class="download_brochure btn-update" id="<%= u.id %>">Brochure</a>
+                    <% end %>
+                  </p>
+              <% end %>
             </div>
             <div class="hidden-desktop">
               <p class="user_info"><%= u.headline.truncate(20) if !u.headline.blank? %></p>

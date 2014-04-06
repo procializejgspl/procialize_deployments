@@ -101,6 +101,17 @@ h6.user_name {
     padding: 5px 15px;
     margin-top: 15px;
 }
+.btn-update-profile{
+
+    margin-left: 24px;
+    font-family: "open sans";
+    color: #fff;
+    background-color: #f26522;
+    border: none;
+    border-radius: 0;
+    padding: 5px 15px;
+}
+
 
 ul.alternate_colored_list li.sidebar_link:hover {
     background-color: #f26522;
@@ -132,7 +143,7 @@ ul.alternate_colored_list li.sidebar_link:hover {
     font-size: 1.1em;
 }
 
-input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], textarea {
+input[type="file"],input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], textarea {
     border-radius: 0;
     color: #003663;
     border-color: #003663;
@@ -176,4 +187,16 @@ hr{
 
 .white-text{
     color: #ffffff;
+}
+.navbar .title-bar{
+    background:#003663;
+    border-radius:0;
+}
+.apply_font{
+    font-family: "open sans";
+    color: #003663;
+}
+.apply_light{
+    font-family: "open sans";
+    color: #5b8395;
 }

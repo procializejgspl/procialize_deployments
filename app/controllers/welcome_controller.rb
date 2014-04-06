@@ -119,7 +119,7 @@ class WelcomeController < ApplicationController
     end
     data.count=data.count+1
     data.save!
-    render text: 'Done'
+    render text: ''
   end
 
 def follow

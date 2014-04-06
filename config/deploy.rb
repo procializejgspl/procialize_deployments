@@ -4,7 +4,7 @@ require "bundler/capistrano"
 set :rake, 'bundle exec rake'
 
 default_run_options[:pty] = true
-set :repository, "https://github.com/procializejgspl/new_version.git"
+set :repository, "https://github.com/procializejgspl/procialize_deployments.git"
 set :scm, "git"
 set :branch, "procialize_ic2014_new"
 set :deploy_via, :remote_cache

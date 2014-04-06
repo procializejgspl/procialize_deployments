@@ -24,7 +24,7 @@
         <div class="span10">
           <div class="row-fluid">
 
-              <span class="white-text" style="font-size: 1.2em;font-weight:bold "> <%= list_title %></b></span>
+              <span class="white-text" style="font-size: 1.2em; "> <%= list_title.to_s.capitalize %></b></span>
               <!--<span class="pull-right"><%#= link_on_right  %></span>-->
 
             <!--<div class="span2 offset1 hidden-phone pull-right" style="pointer-events:auto" >-->
@@ -32,11 +32,11 @@
             <!--</div>-->
           </div>
           <div class="row-fluid">
-            <span class="white-text" style="font-size: 0.9em;font-weight: bold">  <%= list_info.truncate(80) %></span>
+            <span class="white-text" style="font-size: 0.9em">  <%= list_info.truncate(80) %></span>
           </div>
           <div class="row-fluid" style="line-height: 12px;">
             <!--body-->
-            <span style="font-size: 0.8em;line-height: 10px">  <%=  strip_tags(list_body.truncate(120)) %></span>
+            <span class="white-text" style="font-size: 0.8em;line-height: 10px">  <%=  strip_tags(list_body.truncate(120)) %></span>
           </div>
 
         </div>

@@ -7,7 +7,7 @@
 <div class="row-fluid">
   <div class="span12">
     <div class="span6">
-    <h2>Edit my profile</h2>
+    <h2 class="apply_font">Edit my profile</h2>
     </div>
     <div class="span4">
       <span style="float: right"><a href="<%= user_omniauth_authorize_path(:linkedin) %>" class="btn btn-info"><%= image_tag "linkedin_logo.png",:size=>"32x32" %>Populate via LinkedIn</a></span>
@@ -174,7 +174,7 @@
 
   </div>
   <div class="span6">
-    <%= f.submit "Update",:class=>"btn btn-medium btn-success" %>
+    <%= f.submit "Update",:class=>"btn-update-profile" %>
 
   </div>
 

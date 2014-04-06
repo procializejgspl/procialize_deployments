@@ -93,11 +93,33 @@ class WelcomeController < ApplicationController
     v.count=v.count+1
     v.save!
 
+    #adding internal analytics
+    perfomed_on = User.find(params[:id]).name
+    data = Analytic.find_by_performed_by_and_performed_on(current_user.name, perfomed_on)
+    if data.nil?
+      data = Analytic.create!(performed_by: current_user.name, action: 'Viewed profile of', performed_on: perfomed_on)
+    end
+
+    data.count=data.count+1
+    data.save!
+
     @user  = User.find(params[:id])
     @feeds=@user.feeds
     @tweets = Customizer.gettweets()
     @user_employees = @user.employees.map{|e|e.people}
     render "welcome/user_profile" ,:layout => false
+  end
+
+  def bannerclick
+    #adding internal analytics
+    perfomed_on = AdvLogos.find(params[:ad_id]).name
+    data = Analytic.find_by_performed_by_and_performed_on(current_user.name, perfomed_on)
+    if data.nil?
+      data = Analytic.create!(performed_by: current_user.name, action: 'Clicked Advertisement', performed_on: perfomed_on)
+    end
+    data.count=data.count+1
+    data.save!
+    render text: 'Done'
   end
 
 def follow
@@ -127,6 +149,7 @@ def follow
 
     @tweets = Customizer.gettweets()
     @user_employees = @user.employees.map{|e|e.people}
+
   end
 end
 

@@ -20,7 +20,7 @@ module ApplicationHelper
     meeter = meeting.meeters.where("user_id = ?",current_user.id).first
     if !meeter.nil?
     if meeter.status == 0 or meeter.status == 2
-     link_to fa_icon("check"), accept_meeting_path(:meeting_id=>meeting.id,:decision=>1)
+     link_to 'Approve', accept_meeting_path(:meeting_id=>meeting.id,:decision=>1), class: 'btn-success', style: 'padding: 5px; font-size: 14px'
     end
       end
   end
@@ -29,7 +29,7 @@ module ApplicationHelper
     meeter = meeting.meeters.where("user_id = ?",current_user.id).first
     if !meeter.nil?
     if meeter.status == 0 or meeter.status == 1
-      link_to fa_icon("trash"), accept_meeting_path(:meeting_id=>meeting.id,:decision=>2)
+      link_to 'Reject', accept_meeting_path(:meeting_id=>meeting.id,:decision=>2), class: 'btn-update', style: 'padding: 5px; font-size: 14px; margin-right: 15px;'
     end
       end
   end
@@ -93,9 +93,9 @@ module ApplicationHelper
 
   def generate_follow_link(user_id)
     if Follower.find_by_user_id_and_follower_id(user_id,current_user.id).nil?
-      link_to "Follow",follow_path(:user_id=>@user.id,:decision=>"true"),:class => "btn btn-small btn-default"
+      link_to "Follow",follow_path(:user_id=>@user.id,:decision=>"true"),:class => "btn-user btn-dark", style: 'padding: 5px 30px'
     else
-      link_to "Unfollow",follow_path(:user_id=>@user.id,:decision=>"false"),:class => "btn btn-small btn-default"
+      link_to "Unfollow",follow_path(:user_id=>@user.id,:decision=>"false"),:class => "btn-user btn-dark", style: 'padding: 5px 21px'
     end
   end
 

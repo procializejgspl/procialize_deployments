@@ -1,7 +1,8 @@
 
 body{
+    /* SMA starts
     background-color: black;
-    background-image: url("/assets/back.jpg");
+    background-image: url("/assets/back.jpg"); */
     color:#ffffff;
 }
 
@@ -24,10 +25,10 @@ body{
 
 }
 
-.navbar .nav>li>a:focus, .navbar .nav>li>a{
-    color: #000000;
-    /*text-shadow: 1px 1px #000000;;*/
+.nav-list >li >a,.nav-list .nav-list .nav-header{
+    text-shadow: 0;
 }
+
 .message_tabs
 {
     color: white;
@@ -76,13 +77,6 @@ body{
 
 }
 
-
-
-.sidebar_link
-{
-    padding: 2%;
-    font-size: 1.2em;
-}
 .main_body
 {
     height: 575px;
@@ -128,8 +122,9 @@ body{
     list-style-type: none;
     overflow-y: auto;
     overflow-x: hidden;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
+    /*SMA start*/
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .post_colored{
@@ -137,10 +132,12 @@ body{
     overflow-y: auto;
     /*padding: 2%;*/
     overflow-x: hidden;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
+    /*border-top-left-radius: 2%;
+    border-top-right-radius: 2%;*/
 }
 
+.user_list
+.user_list
 .user_list
 {
     padding: 2%;
@@ -188,9 +185,17 @@ Position must be relative!
 
 .well
 {
-    background-color: #424242;border: 1px solid #aaaaaa;
+   /* SMA start background-color: #424242;border: 1px solid #aaaaaa;  */
     padding-bottom: 0;
+    background: -webkit-radial-gradient(white, #e0f3fa); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(white, #e0f3fa); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(white, #e0f3fa); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(white, #e0f3fa); /* Standard syntax (must be last) */
+      border-radius: 0;
+}
 
+.alternate_colored_list li:hover {
+    background-color: #f26522;
 }
 
 
@@ -203,4 +208,9 @@ Position must be relative!
 ul
 {
     margin: 0 0 0 0;
+}
+
+.setup_btn{
+    font-weight: normal;
+    width:5em;
 }

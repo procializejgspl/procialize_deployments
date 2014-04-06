@@ -1,3 +1,9 @@
+<style>
+    body{
+        color: #003663;
+        font-family: "open sans";
+    }
+</style>
 <%= content_for(:first_half) do %>
     <script>
       function changeText(txt)
@@ -10,7 +16,7 @@
 
     </script>
     <div class="row-fluid">
-    <div class="span12">
+    <div style="color: #003663" class="span12">
     Track: <%= collection_select(nil,"track_ids[]",Track.all,:id,:name,{},{:id=>"track",:class=>"multiselect trackselect",:multiple=>"multiple"}) %>
     </div>
     </div>
@@ -21,7 +27,7 @@
   <div class="span12 event_list_container" >
 
 
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs alternate_colored_list">
         <% EventDay.all.each_with_index do |ed,index| %>
             <% if index==0  %>
                 <% currclass="active" %>

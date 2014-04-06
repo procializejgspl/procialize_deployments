@@ -1,3 +1,9 @@
+<style>
+  body{
+      color: #003663;
+  }
+</style>
+
 <%=  content_for(:first_half)  do%>
 
     <div class="row-fluid hidden-desktop">
@@ -10,7 +16,7 @@
 
 <div class="row-fluid">
 <div class="span11">
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs alternate_colored_list">
   <li class="active"><a href="#schd" data-toggle="tab" ><b>Scheduled(<%= @scheduled.count %>)</b></a></li>
   <li><a href="#invt" data-toggle="tab"><b>Pending(<%= @pending.count %>)</b></a></li>
   <li class="hidden-phone" ><a href="#dec" data-toggle="tab"><b>Declined(<%= @declined.count %>)</b></a></li>

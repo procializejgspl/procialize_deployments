@@ -1,55 +1,58 @@
-<div class="row-fluid" style="margin-left: 4%">
-  <div class="span12 ">
+<div class="row-fluid" style="margin-left: 4%" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div class="span12 " style="margin-left: -20px;">
     <input type="text" class="input-xlarge search-query" id="srch" placeholder="Search by industry , name, company , designation">
   </div>
 </div>
-  <br>
+<br>
 <ul class="alternate_colored_list" style="list-style-type: none;height: 100%" id="usr_list">
-      <% @users.each do |u| %>
-          <li class="user_list" style="line-height: 10px;">
-            <div class="row-fluid"  >
-            <div class="span12">
-
-            <h6>
-
+  <% @users.each do |u| %>
+      <li class="user_list" style="line-height: 10px;">
+        <div class="row-fluid">
+          <div class="span12">
+            <h6 class="user_name">
               <%= u.name.titleize %>
               <span class="pull-right">
-              <%= link_to (fa_icon "hand-up"),profile_path(u.id),:onclick=>"toggleContent(this,event)",:title=>"View Profile" %>
-              <%= link_to (fa_icon "envelope"),new_message_path(:rcpt=>u.id),:onclick=>"toggleContent(this,event)",:title => "Send message" if u.role.can_message %>
-              <%= link_to (fa_icon "comments"),new_meeting_path(:rcpt=>u.id),:onclick=>"toggleContent(this,event)",:title=>"Fix meeting" if u.role.can_meet %>
+          <%= link_to 'Profile',profile_path(u.id),:onclick=>"toggleContent(this,event)",class: "btn btn-small setup_btn",:title=>"View Profile" %><br>
+                <%= link_to 'Message', new_message_path(:rcpt => u.id), :onclick => "toggleContent(this,event)", style: 'margin-top: 6px;', class: "btn btn-small setup_btn", :title => "Send message" if u.role.can_message %><br>
+                <%= link_to 'Meet', new_meeting_path(:rcpt => u.id), :onclick => "toggleContent(this,event)", style: 'margin-top: 6px;', class: "btn btn-small setup_btn", :title => "Fix meeting" if u.role.can_meet %>
               </span>
 
             </h6>
-              <div class="hidden-phone">
-              <p><%= u.headline %></p>
-              <p><%= u.company %></p>
-              <p> <%= u.industry %></p>
-              </div>
-                <div class="hidden-desktop">
-              <p><%= u.headline.truncate(20) if !u.headline.blank? %></p>
-              <p><%= u.company.truncate(20) if !u.company.blank? %></p>
-              <p> <%= u.industry.truncate(20) if !u.industry.blank? %></p>
-                </div>
+
+            <div class="hidden-phone">
+              <p class="user_info"><%= u.headline %></p>
+
+              <p class="user_info"><%= u.company %></p>
+
+              <p class="user_info"> <%= u.industry %></p>
+            </div>
+            <div class="hidden-desktop">
+              <p class="user_info"><%= u.headline.truncate(20) if !u.headline.blank? %></p>
+
+              <p class="user_info"><%= u.company.truncate(20) if !u.company.blank? %></p>
+
+              <p class="user_info"> <%= u.industry.truncate(20) if !u.industry.blank? %></p>
+            </div>
 
 
-            </div>
-            </div>
-          </li>
-      <% end %>
-    </ul>
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $("#srch").keypress(function(){
-            jQuery.expr[":"].contains = jQuery.expr.createPseudo(function(arg) {
-                return function( elem ) {
+        $("#srch").keypress(function () {
+            jQuery.expr[":"].contains = jQuery.expr.createPseudo(function (arg) {
+                return function (elem) {
                     return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
                 };
             });
             srch = $(this).val();
             $("#usr_list").find("li").hide()
-            $("#usr_list").find($("li:contains("+srch+")")).show();
-        })  ;
+            $("#usr_list").find($("li:contains(" + srch + ")")).show();
+        });
     });
 </script>

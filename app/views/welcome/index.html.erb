@@ -1,14 +1,20 @@
 <%= content_for(:first_half) do %>
+    <script>
+      $(function(){
+          $('.item a').on('click', function(){
+              $.get('/bannerclick/' + $(this).attr('id') , function(data){
+              });
+          });
+      });
+    </script>
     <div class="row-fluid">
 
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <% AdvLogos.all.each_with_index do |adv,index| %>
               <div class="item">
-                <%= link_to image_tag(adv.avatar.url) ,adv.name,:target=>"_blank" %>
+                <%= link_to image_tag(adv.avatar.url) ,(adv.name.include? "http" )? adv.name : ("http://" + adv.name) ,:target=>"_blank",class:'adv_img', id: adv.id %>
               </div>
-
-
           <% end %>
         </div>
       </div>
@@ -44,7 +50,7 @@
         <%= render :partial => "welcome/user_list" %>
       </div>
     </div>
-    <div class="row-fluid" style="margin-top:25% ">
+    <div class="row-fluid" style="margin-top:15%">
       <div class="span12">
         <%= render :partial => "welcome/twitter_feeds" %>
       </div>

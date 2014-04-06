@@ -9,10 +9,10 @@
          <div class="item">
             <li style="cursor:pointer;">
               <%= hidden_field_tag "link",profile_path(f.user.id),:class=>"goto" %>
-        <div class="row-fluid" style="height: 10%;width: 90%">
+        <div class="row-fluid" style="height: 10%;width: 100%">
           <div class="span12">
             <div class="row-fluid message_list_header" >
-              <b>  <%= f.user.name %> says...</b>
+              <span class="span10">  <%= f.user.name + " - "+ f.user.headline + "," + f.user.company %> says...</span>
             </div>
             <div class="row-fluid" style="padding: 2%">
 
@@ -22,7 +22,7 @@
               <div class="span9">
 
                 <div class="row-fluid">
-                  <span style="font-size: 1.0em;font-weight: bold">  <%= f.message  %></span>
+                  <span class="user_message">  <%= f.message  %></span>
                 </div>
 
 

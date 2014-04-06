@@ -1,0 +1,179 @@
+html, body {
+    font-family: 'open sans';
+    font-size: 14px;
+}
+
+.navbar .nav >li >a {
+    text-shadow: 0 0 0;
+}
+
+.navbar .brand {
+    color: white;
+    font-size: 15px;
+    font-weight: lighter;
+    font-family: "open sans";
+}
+
+.navbar .brand #make_bold {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navbar .nav>li>a:focus, .navbar .nav>li>a {
+    color: #ffffff;
+    /*text-shadow: 1px 1px #000000;;*/
+}
+
+.navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
+    /*SMA start*/
+    color: #ffffff;
+    /*text-shadow: 1px 1px #000000;;*/
+}
+
+.nav-list > li > a, .nav-list .nav-header {
+    text-shadow: 0 0 0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: normal;
+
+}
+
+.bubble {
+    background-color: #F26522;
+    float: right;
+    font-size: 13px;
+    margin: 1px -5px;
+    max-height: 15px;
+    padding: 3px 4px 1px;
+}
+
+#logout {
+
+    margin-right: -44px;
+}
+
+#logout, #user_name {
+    font-size: 12px;
+}
+
+.pipe {
+    height: 20px;
+    width: 1px;
+    background-color: orange;
+    margin-top: 10px;
+}
+
+input.search-query {
+    border-color: #5B8395;
+    color: #5B8395;
+    font-family: open sans;
+    font-size: 0.82em;
+    margin-left: 7px;
+    margin-top: -8px;
+    width: 90%;
+    border-radius: 0;
+}
+
+#usr_list {
+    margin-top: -14px;
+}
+
+span.user_message {
+    color: #5b8395;
+    font-family: "open sans";
+}
+
+h6.user_name {
+    font-family: "open sans";
+    font-size: 13px;
+}
+
+.user_info {
+    font-size: 13px;
+}
+
+.btn-update, .btn-update:hover {
+    font-family: "open sans";
+    color: #fff;
+    background-color: #f26522;
+    border: none;
+    border-radius: 0;
+    padding: 5px 15px;
+    margin-top: 15px;
+}
+
+ul.alternate_colored_list li.sidebar_link:hover {
+    background-color: #f26522;
+}
+
+.img-responsive, .adv_img img, .event_logo {
+    border: 1px solid #003663;
+}
+
+.adv_img img, .event_logo {
+    width: 99%;
+}
+
+.sign_in {
+    font-family: "open sans";
+}
+
+.nav-tabs {
+    overflow: hidden;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+    color: white;
+    background-color: #f26522;
+}
+
+.span_label {
+    color: #003663;
+    font-size: 1.1em;
+}
+
+input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], textarea {
+    border-radius: 0;
+    color: #003663;
+    border-color: #003663;
+}
+
+.new_message{
+    color: #003663;
+    font-family: "open sans";
+}
+hr{
+    border-color: #003663;
+}
+
+.user-info{
+    line-height: 10px;
+}
+
+.btn-user, .btn-dark, .btn-light{
+    width: 100%;
+    font-family: "open sans";
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    padding: 5px 21px;
+    margin-top: 15px;
+}
+
+.btn-user:hover{
+    background-color: #f26522;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-dark{
+    background-color: #003663;
+}
+
+.btn-light{
+    background-color: #5b8395;
+}
+
+.white-text{
+    color: #ffffff;
+}

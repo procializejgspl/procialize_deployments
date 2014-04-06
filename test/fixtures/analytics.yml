@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  performed_by: MyString
+  action: MyString
+  performed_on: MyString
+
+two:
+  performed_by: MyString
+  action: MyString
+  performed_on: MyString

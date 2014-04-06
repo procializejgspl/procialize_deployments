@@ -1,10 +1,20 @@
+
 <style>
   body{
       color: #003663;
       color: #003663;
   }
 </style>
-
+<script>
+    $(function(){
+        $('.download_brochure').on('click', function(){
+            alert("clicked");
+            $.get('/download_brochure/'+$(this).attr('id'),function(data){});
+            /*$.get('/bannerclick/' + $(this).attr('id') , function(data){
+            });*/
+        });
+    });
+</script>
 <div class="row-fluid" style="margin-left: 6%;">
 
   <div class="span3">
@@ -12,13 +22,12 @@
       <%= image_tag @user.user_pic.url %>
     </div>
   </div>
-
   <div class="span9">
 
     <h4>
       <%= @user.name.titlecase %> - <%= @user.role.name %>
       <% if @user.assets.count>0 %>
-          <a target="_blank" href="<%= @user.assets.first.content.url %>"><i class="icon-download"></i> </a>
+          <a target="_blank" href="<%= @user.assets.first.content.url %>"  class="download_brochure btn-update" id="<%= @user.id %>">Download</a>
       <% end %>
     </h4>
 

@@ -90,7 +90,7 @@ Procialize::Application.routes.draw do
   match "/user_for_roles/:id",:to=>"welcome#user_based_on_roles",:as=>"user_roles"
 
   match "/bannerclick/:ad_id",:to=>"welcome#bannerclick",:as=>"bannerclick"
-
+  match "/download_brochure/:user_id",to:"welcome#download_brochure"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

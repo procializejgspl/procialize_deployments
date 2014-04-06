@@ -3,9 +3,9 @@
 
 class WelcomeController < ApplicationController
   def index
-   @tweets = Customizer.gettweets()
-   @feeds = Feed.all.reverse!
-   @users = User.all
+    @tweets = Customizer.gettweets()
+    @feeds = Feed.all.reverse!
+    @users = User.all
 
   end
 
@@ -18,18 +18,16 @@ class WelcomeController < ApplicationController
     Recommend.destroy_all
 
 
-
-
     User.all.each do |u|
       if !u.interest=""
         @user_recommend=User.find_all_by_industry(u.interest).shuffle[0..2]-[u]
         @user_recommend.each do |ur|
-          @recommend=Recommend.create(:user_id => u.id,:recommended_id=>ur.id)
+          @recommend=Recommend.create(:user_id => u.id, :recommended_id => ur.id)
         end
         if @user_recommend.count < 3
           (3 - @user_recommend.count).times do |i|
             cu = (User.all - @user_recommend)[0]
-            @recommend=Recommend.create(:user_id => u.id,:recommended_id=>cu.id)
+            @recommend=Recommend.create(:user_id => u.id, :recommended_id => cu.id)
 
           end
         end
@@ -37,12 +35,12 @@ class WelcomeController < ApplicationController
       elsif !u.industry="" and u.interest=""
         @user_recommend=User.find_all_by_industry(u.industry).shuffle[0..2]-[u]
         @user_recommend.each do |ur|
-          @recommend=Recommend.create(:user_id => u.id,:recommended_id=>ur.id)
+          @recommend=Recommend.create(:user_id => u.id, :recommended_id => ur.id)
         end
         if @user_recommend.count < 3
           (3 - @user_recommend.count).times do |i|
             cu = (User.all - @user_recommend)[0]
-            @recommend=Recommend.create(:user_id => u.id,:recommended_id=>cu.id)
+            @recommend=Recommend.create(:user_id => u.id, :recommended_id => cu.id)
 
           end
         end
@@ -50,12 +48,12 @@ class WelcomeController < ApplicationController
       elsif !u.location="" and u.interest="" and u.industry=""
         @user_recommend=User.find_all_by_location(u.location).shuffle[0..2]-[u]
         @user_recommend.each do |ur|
-          @recommend=Recommend.create(:user_id => u.id,:recommended_id=>ur.id)
+          @recommend=Recommend.create(:user_id => u.id, :recommended_id => ur.id)
         end
         if @user_recommend.count < 3
           (3 - @user_recommend.count).times do |i|
             cu = (User.all - @user_recommend)[0]
-            @recommend=Recommend.create(:user_id => u.id,:recommended_id=>cu.id)
+            @recommend=Recommend.create(:user_id => u.id, :recommended_id => cu.id)
 
           end
         end
@@ -64,50 +62,48 @@ class WelcomeController < ApplicationController
       else
         @user_recommend=User.all.shuffle[0..2] - [u]
         @user_recommend.each do |ur|
-          @recommend=Recommend.create(:user_id => u.id,:recommended_id=>ur.id)
+          @recommend=Recommend.create(:user_id => u.id, :recommended_id => ur.id)
         end
         if @user_recommend.count < 3
           (3 - @user_recommend.count).times do |i|
             cu = (User.all - @user_recommend)[0]
-            @recommend=Recommend.create(:user_id => u.id,:recommended_id=>cu.id)
+            @recommend=Recommend.create(:user_id => u.id, :recommended_id => cu.id)
 
           end
         end
 
       end
-      end
+    end
 
 
     render :text => "Done"
     return
-    end
-
-
+  end
 
 
   def user_profile
-    v = Viewer.find_by_user_id_and_viewed_by(params[:id],current_user.id)
+    v = Viewer.find_by_user_id_and_viewed_by(params[:id], current_user.id)
     if v.nil?
-      v = Viewer.create!(:user_id=>params[:id],:viewed_by=>current_user.id)
+      v = Viewer.create!(:user_id => params[:id], :viewed_by => current_user.id)
     end
     v.count=v.count+1
     v.save!
 
     #adding internal analytics
-    perfomed_on = User.find(params[:id]).name
-    data = Analytic.find_by_performed_by_and_performed_on(current_user.name, perfomed_on)
+    performed_on = User.find(params[:id]).name
+    data=Analytic.find_by_performed_by_and_performed_on_and_action(current_user.name, performed_on,'Viewed profile of')
     if data.nil?
-      data = Analytic.create!(performed_by: current_user.name, action: 'Viewed profile of', performed_on: perfomed_on)
+      data = Analytic.create!(performed_by: current_user.name, action: 'Viewed profile of', performed_on: performed_on)
     end
 
     data.count=data.count+1
     data.save!
 
-    @user  = User.find(params[:id])
+    @user = User.find(params[:id])
     @feeds=@user.feeds
     @tweets = Customizer.gettweets()
-    @user_employees = @user.employees.map{|e|e.people}
-    render "welcome/user_profile" ,:layout => false
+    @user_employees = @user.employees.map { |e| e.people }
+    render "welcome/user_profile", :layout => false
   end
 
   def bannerclick
@@ -122,23 +118,33 @@ class WelcomeController < ApplicationController
     render text: ''
   end
 
-def follow
-  if params[:decision] =="true"
-  Follower.create!(:user_id=>params[:user_id],:follower_id=>current_user.id)
-    notice = "You are now following "+User.find(params[:user_id]).name
-  else
-    Follower.find_by_user_id_and_follower_id(params[:user_id],current_user.id).destroy
-    notice = "You are now not following "+User.find(params[:user_id]).name
+  def download_brochure
+    performed_on = User.find(params[:user_id]).name
+    data=Analytic.find_by_performed_by_and_performed_on_and_action(current_user.name, performed_on,'Downloaded the Brochure of')
+    if data.nil?
+      data=Analytic.create!(performed_by: current_user.name, action: 'Downloaded the Brochure of', performed_on: performed_on)
+    end
+    data.count=data.count+1
+    data.save!
+    render text: ''
   end
 
-  redirect_to root_path ,:notice=>notice
+  def follow
+    if params[:decision] =="true"
+      Follower.create!(:user_id => params[:user_id], :follower_id => current_user.id)
+      notice = "You are now following "+User.find(params[:user_id]).name
+    else
+      Follower.find_by_user_id_and_follower_id(params[:user_id], current_user.id).destroy
+      notice = "You are now not following "+User.find(params[:user_id]).name
+    end
 
-                                                           end
+    redirect_to root_path, :notice => notice
 
+  end
 
 
   def display_menu
-    render "welcome/_menu_items",:layout=>false
+    render "welcome/_menu_items", :layout => false
   end
 
 
@@ -148,7 +154,7 @@ def follow
     @feeds=@user.feeds
 
     @tweets = Customizer.gettweets()
-    @user_employees = @user.employees.map{|e|e.people}
+    @user_employees = @user.employees.map { |e| e.people }
 
   end
 end

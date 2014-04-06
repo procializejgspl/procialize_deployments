@@ -31,7 +31,7 @@ development:
   host: localhost
   adapter: mysql2
   encoding: utf8
-  database: ic2014_development_db
+  database: ic2014_production_db
   pool: 5
   username: root
   password: nikunj

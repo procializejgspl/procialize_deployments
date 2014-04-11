@@ -42,6 +42,14 @@
               <p class="user_info"><%= u.company.truncate(20) if !u.company.blank? %></p>
 
               <p class="user_info"> <%= u.industry.truncate(20) if !u.industry.blank? %></p>
+              <% if !u.assets.nil? %>
+                  <br>
+                  <p class="user_info">
+                    <% if u.assets.count > 0 %>
+                        <a target="_blank" href="<%= u.assets.first.content.url %>" class="download_brochure btn-update" id="<%= u.id %>">Brochure</a>
+                    <% end %>
+                  </p>
+              <% end %>
             </div>
 
 

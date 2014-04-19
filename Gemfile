@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 gem 'therubyracer'
 gem 'execjs'
 gem 'devise'
-gem 'rails_admin'
+gem 'rails_admin', '~> 0.4.9'
 gem "rails_admin_import", :git => "git://github.com/stephskardal/rails_admin_import.git"
 gem "rails_admin_tag_list"
 gem 'gon', '3.0.5'

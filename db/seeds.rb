@@ -12,10 +12,9 @@ r = Role.create!(:name=>"Organizer",:description=>"some")
 
 
 
-u1 = User.create!(:email => 'organizer@ptotem.com',:password => 'password',:password_confirmation => 'password',:name => 'organizer',:role_id=>r.id)
-User.create!(:email => 'rakesh@ptotem.com',:password => 'password',:password_confirmation => 'password',:name => 'rakesh',:role_id=>r1.id)
-User.create!(:email => 'nilesh@ptotem.com',:password => 'password',:password_confirmation => 'password',:name => 'Nilesh',:role_id=>r1.id)
-User.create!(:email => 'rushabh@ptotem.com',:password => 'password',:password_confirmation => 'password',:name => 'Rushabh',:role_id=>r1.id)
+u1 = User.create!(:email => 'organizer@procialize.net',:password => 'password',:password_confirmation => 'password',:name => 'organizer',:role_id=>r.id, company: 'Procialize', headline: 'Event Organizer', name: 'organizer')
+
+
 #locations..
 Location.create!(:name=>"Lounge")
 Location.create!(:name=>"Conference Room")

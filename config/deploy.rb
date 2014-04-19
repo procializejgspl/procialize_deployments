@@ -6,7 +6,7 @@ set :rake, 'bundle exec rake'
 default_run_options[:pty] = true
 set :repository, "https://github.com/procializejgspl/procialize_deployments.git"
 set :scm, "git"
-set :branch, "procialize_diemould"
+set :branch, "procialize_diemould_new"
 set :deploy_via, :remote_cache
 
 set :application, "Procialize_diemould"
